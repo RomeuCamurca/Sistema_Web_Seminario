@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>Amigos do Seminário</title>
+
+<!-- link do bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<!-- link da imagem da guia do navegador -->
+<link rel="shortcut icon" href="/img/AS.ico" type="image/x-icon">
+
+<!-- meta tag para responsividade em dispositivos móveis -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+body {
+	background-color: #e3f2fd;
+}
+</style>
+
+</head>
+
+<style>
+body {
+	background-color: #e3f2fd;
+}
+</style>
+</head>
+<body>
+
+	<header>
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+			<span class="navbar-brand mb-0 h1"
+				style="font-weight: bold; font-family: times; color: #000000; color: rgb(0, 0, 0); background-color: #000000; background-color: rgba(0, 0, 0, 0); line-height: normal; vertical-align: baseline; letter-spacing: normal; word-spacing: 0px; font-weight: 400; font-style: normal; font-variant: normal; text-transform: none; text-decoration: none solid rgb(0, 0, 0); text-align: start; text-indent: 0px; font-size: 24px;">
+				<img src="/img/2.png" class="img-circle"
+				style="max-width: 90px; max-height: 90px;" /> ASSOCIAÇÃO AMIGOS DO SEMINÁRIO
+			</span>
+		</nav>
+	</header>
+
+	<div class="card container">
+
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" style="background-color: white; padding-left: 0px; font-weight: bold;">
+				<li class="breadcrumb-item active" aria-current="page">DETALHES DA FICHA</li>
+			</ol>
+		</nav>
+
+		<div class="card-body">
+
+			<article>
+				<p style="margin-top: -6px;">
+					<i class="material-icons">assignment_ind</i>
+					<label style="font-weight: bold;">Nome Completo:</label> 
+					<span th:text="${ficha.nome}"></span> 
+					<br> 
+					<i class="material-icons">date_range</i> 
+					<label style="font-weight: bold;">Data de Nascimento:</label>
+					<span th:text="${#dates.format(ficha.dataNascimento, 'dd/MM/yyyy')}"></span> 
+					<br> 
+					<i class="material-icons">account_balance</i> 
+					<label style="font-weight: bold;">Paróquia:</label> 
+					<span th:text="${ficha.paroquia}"></span> 
+					<br>
+					<i class="material-icons">home</i>
+					<label style="font-weight: bold;">Endereço:</label>
+					<span th:text="${ficha.endereco}"></span>
+					<br>
+					<i class="material-icons">call</i> 
+					<label style="font-weight: bold;">Telefone:</label>
+					<span th:text="${ficha.telefone}"></span>
+					<br>
+					<i class="material-icons">attach_money</i> 
+					<label style="font-weight: bold;">Valor Mensal de Contribuição:</label>
+					<span th:text="${ficha.valorMensal}"></span>
+					<br> 
+					<i class="material-icons">monetization_on</i> 
+					<label style="font-weight: bold;">Forma de Pagamento:</label> 
+					<span th:text="${ficha.formaPagamento}"></span>
+				</p>
+				<a href="/fichas"><button style="margin-left: 1000px;"
+						type="button" class="btn btn-secondary">Voltar</button></a>
+			</article>
+
+		</div>
+
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Amigos do Seminario</title>
+	
+	<!-- link do bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+    <!-- link da imagem da guia do navegador -->
+    <link rel="shortcut icon" href="/img/AS.ico" type="image/x-icon">
+    
+    <!-- meta tag para responsividade em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <style>
+		body {
+			background-color: #e3f2fd;
+}
+	</style>
+    
+</head>
+<body>
+
+	<header>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <span class="navbar-brand mb-0 h1" style="font-weight: bold; font-family: times; color: #000000; 
+            	color: rgb(0, 0, 0); background-color: #000000; background-color: rgba(0, 0, 0, 0); 
+            	line-height: normal; vertical-align: baseline; letter-spacing: normal; word-spacing: 0px;
+            	font-weight: 400; font-style: normal; font-variant: normal; text-transform: none; 
+            	text-decoration: none solid rgb(0, 0, 0); text-align: start; text-indent: 0px; font-size: 24px;">
+            <img src="/img/2.png" class="img-circle" style="max-width: 90px; max-height: 90px;"/>
+            ASSOCIAÇÃO AMIGOS DO SEMINÁRIO</span>
+            
+            <a href="/fichas"><button class="btn btn-primary" style="margin-top: -50px; color: black; font-weight: bold;">
+            	LISTA DE FICHAS
+				<img src="/img/list.svg">            
+            </button></a>
+        </nav>
+    </header>
+
+	<div class="card container">
+		
+		<nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0px; font-weight: bold;">
+                <li class="breadcrumb-item active" aria-current="page">CADASTRAR FICHA</li>
+            </ol>
+        </nav>	
+		
+		<div class="card-body">
+	
+	<form class="container" th:object="${ficha}" th:action="@{/cadastrarFicha}" method="post">
+	
+		<div class="form-group row">
+			<!-- Mensagem de sucesso -->
+			<div class="alert alert-success" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+			
+			<!-- Mensagem de erro -->
+			<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedError : ${#fields.detailedErrors()}">
+					<span th:text="${detailedError.message}"></span>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-row">
+		   <div class="form-group col-md-10" th:classappend="${#fields.hasErrors('nome')}? 'has-error'"> 
+		      <label for="nome">Nome</label>
+		      <input type="text" class="form-control" th:field="*{nome}" placeholder="Digite o Nome Completo">
+		    </div>
+		    
+		    <div class="form-group col-md-2" th:classappend="${#fields.hasErrors('dataNascimento')}? 'has-error'">
+		      <label for="dataNascimento">Data de Nascimento</label>
+		      <input type="date" class="form-control" th:field="*{dataNascimento}">
+		    </div>
+		</div>
+				
+		<div class="form-group">
+			<div th:classappend="${#fields.hasErrors('paroquia')}? 'has-error'">
+	      		<label for="formaPagamento">Paróquia</label>
+	      			<select name="paroquia" th:value="${paroquia}" class="form-control">
+	        			<option selected disabled>Escolher...</option>
+	        			<optgroup label="Banabuiú">
+	        				<option>Paróquia Nossa Senhora de Fátima – Banabuiú</option>
+	        			</optgroup>
+	        			<optgroup label="Boa Viagem">
+	        				<option>Paróquia Nossa Senhora da Boa Viagem</option>
+	        				<option>Paróquia Nossa Senhora da Guia</option>
+	        				<option>Paróquia Nossa Senhora de Fátima – Boa Viagem</option>
+	        			</optgroup>
+	        			<optgroup label="Capistrano">
+	        				<option>Paróquia Nossa Senhora de Nazaré</option>
+	        			</optgroup>
+	        			<optgroup label="Choró">
+	        				<option>Paróquia São Sebastião</option>
+	        			</optgroup>
+	        			<optgroup label="Ibaretama">
+	        				<option>Paróquia Nossa Senhora Auxiliadora</option>
+	        			</optgroup>
+	        			<optgroup label="Itapiúna">
+	        				<option>Área Pastoral São Félix – Palmatória</option>
+	        				<option>Paróquia Nossa Senhora da Conceição</option>
+	        				<option>Paróquia São José – Caio Prado</option>
+	        			</optgroup>
+	        			<optgroup label="Itatira">
+	        				<option> Paróquia Menino Deus</option>
+	        				<option>Paróquia Nossa Senhora do Carmo</option>
+	        			</optgroup>
+	        			<optgroup label="Madalena">
+	        				<option>Paróquia Nossa Senhora da Imaculada Conceição</option>
+	        			</optgroup>
+	        			<optgroup label="Quixadá">
+	        				<option>Paróquia Jesus, Maria e José</option>
+	        				<option>Paróquia Santa Teresinha</option>
+	        				<option>Paróquia São Francisco de Assis – Quixadá</option>
+	        				<option>Paróquia São João Batista e Santa Edwiges</option>
+	        			</optgroup>
+	        			<optgroup label="Quixeramobim">
+	        				<option>Paróquia Nossa Senhora do Perpétuo do Socorro</option>
+	        				<option>Paróquia Santo Antonio</option>
+	        				<option>Paróquia São Francisco de Assis – Quixeramobim</option>
+	        				<option>Paróquia São Miguel Arcanjo</option>
+	        			</optgroup>
+	      			</select>
+      		</div>	
+    	</div>
+    	
+  		<div class="form-group">
+  			<div th:classappend="${#fields.hasErrors('endereco')}? 'has-error'">
+    			<label for="enderoco">Endereço</label>
+    			<input type="text" class="form-control" th:field="*{endereco}" placeholder="Digite o Endereço">
+    		</div>
+  		</div>
+		
+		<div class="form-row">
+    		<div class="form-group col-md-4" th:classappend="${#fields.hasErrors('telefone')}? 'has-error'">
+      			<label for="telefone">Telefone</label>
+      			<input type="text" class="form-control" th:field="*{telefone}" placeholder="(99) 9 9999-9999">
+    		</div>
+    		<div class="form-group col-md-4" th:classappend="${#fields.hasErrors('valorMensal')}? 'has-error'">
+      			<label for="valorMensal">Valor Mensal de Contribuição</label>
+      			<input type="text" class="form-control" th:field="*{valorMensal}" placeholder="Digite o Valor Mensal de Contribuição">
+    		</div>
+    		<div class="form-group col-md-4" th:classappend="${#fields.hasErrors('formaPagamento')}? 'has-error'">
+      			<label for="formaPagamento">Forma de Pagamento</label>
+      			<select name="formaPagamento" th:value="${formaPagamento}" class="form-control">
+        			<option selected disabled>Escolher...</option>
+        			<option>Depósito em Conta</option>
+        			<option>Transferência Bancária</option>
+        			<option>Transferência Agendada</option>
+      			</select>
+    		</div>
+    		
+  		</div>
+  		
+  		
+  			<p><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
+  			
+		<button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+		<a href="/fichas" class="btn btn-secondary btn-sm" role="button">Cancelar</a>
+	</form>
+		</div>
+	</div>
+	
+	<!-- scripts do bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	
+</body>
+
+</html>

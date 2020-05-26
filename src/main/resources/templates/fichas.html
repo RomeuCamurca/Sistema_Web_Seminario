@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>Amigos do Seminario</title>
+
+<!-- link do bootstrap -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<!-- link do datatables -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<!-- link da imagem da guia do navegador -->
+<link rel="shortcut icon" href="/img/AS.ico" type="image/x-icon">
+
+<!-- meta tag para responsividade em dispositivos móveis -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+body {
+	background-color: #e3f2fd;
+}
+</style>
+
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+			<span class="navbar-brand mb-0 h1"
+				style="font-weight: bold; font-family: times; color: #000000; color: rgb(0, 0, 0); 
+				background-color: #000000; background-color: rgba(0, 0, 0, 0); line-height: normal; 
+				vertical-align: baseline; letter-spacing: normal; word-spacing: 0px; font-weight: 400; 
+				font-style: normal; font-variant: normal; text-transform: none; text-decoration: none solid rgb(0, 0, 0);
+				 text-align: start; text-indent: 0px; font-size: 24px;">
+				<img src="/img/2.png" class="img-circle"
+				style="max-width: 90px; max-height: 90px;" /> ASSOCIAÇÃO AMIGOS DO
+				SEMINÁRIO
+			</span> <a href="/cadastrarFicha"><button class="btn btn-primary"
+					style="margin-top: -50px; color: black; font-weight: bold;">
+					CADASTRAR FICHA <img src="/img/plus-circle.svg">
+				</button></a>
+		</nav>
+	</header>
+
+	<div class="card container">
+
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb"
+				style="background-color: white; padding-left: 0px; font-weight: bold;">
+				<li class="breadcrumb-item active" aria-current="page">LISTA DE
+					FICHAS</li>
+			</ol>
+		</nav>
+
+		<div class="card-body">
+
+			<div>
+				<table class="table table-bordered text-center table-hover"
+					id="dados_das_fichas">
+					<thead>
+						<tr>
+							<th scope="col">Detalhes</th>
+							<th>Nome</th>
+							<th>Endereço</th>
+							<th>Telefone</th>
+							<th>Atualizar</th>
+							<th>Deletar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ficha : ${fichas}">
+							<td><a th:href="${(#mvc.url('FC#detalhesFicha').arg(0, ficha.id)).build()}"><button class="btn btn-primary"> <img src="/img/user.svg"></button></a></td>
+							<td><span th:text="${ficha.nome}"></span></td>
+							<td><span th:text="${ficha.endereco}"></span></td>
+							<td><span th:text="${ficha.telefone}"></span></td>
+							<td><button class="btn btn-primary"><img src="/img/edit.svg"></button></td>
+							<td><button class="btn btn-primary"><img src="/img/trash.svg"></button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- scripts do bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+	<!-- script do datatables -->
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+	<!-- script de tradução -->
+	<script>
+		$(document).ready(function() {
+			$('#dados_das_fichas').DataTable({
+				"language" : {
+					"lengthMenu" : "Mostrando _MENU_ registros por página",
+					"zeroRecords" : "Nada encontrado",
+					"info" : "Mostrando página _PAGE_ de _PAGES_",
+					"infoEmpty" : "Nenhum registro disponível",
+					"search" : "Buscar:",
+					"infoFiltered" : "(filtrado de _MAX_ registros no total)",
+					"paginate" : {
+						"first" : "Primeiro",
+						"last" : "Último",
+						"next" : "Próximo",
+						"previous" : "Anterior"
+					}
+				}
+			});
+		});
+	</script>
+
+</body>
+
+</html>
