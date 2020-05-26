@@ -20,7 +20,7 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotBlank(message = "Preechimento do campo Nome é obrigatório.")
+	@NotBlank(message = "Preechimento do campo Nome.")
 	private String nome;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
