@@ -47,20 +47,10 @@ public class FichaControler {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value="/cadastrarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioFicha(Ficha ficha) {
 		
-		ModelAndView mv = new ModelAndView("/formFicha");
+		ModelAndView mv = new ModelAndView("formFicha");
 		mv.addObject("ficha", ficha);
 		
 		return mv;
