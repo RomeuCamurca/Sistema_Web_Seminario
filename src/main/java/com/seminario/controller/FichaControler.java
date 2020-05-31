@@ -46,7 +46,7 @@ public class FichaControler {
 		return mv;
 	}
 	
-	
+	//retorna o formulario da ficha
 	@RequestMapping(value="/cadastrarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioFicha(Ficha ficha) {
 		
@@ -55,9 +55,6 @@ public class FichaControler {
 		
 		return mv;
 	}
-	
-	
-	
 	
 	//adicionar cadastro de ficha
 	@RequestMapping(value="/cadastrarFicha", method=RequestMethod.POST)

@@ -5,7 +5,7 @@
 <head>
 <title>Amigos do Seminário</title>
 
-<!-- link do bootstrap -->
+<!-- css do bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
 <!--Import Google Icon Font-->
@@ -14,7 +14,6 @@
 <!-- link da imagem da guia do navegador -->
 <link rel="shortcut icon" href="/img/AS.ico" type="image/x-icon">
 
-<!-- meta tag para responsividade em dispositivos móveis -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <style>
@@ -61,7 +60,7 @@ body {
 					<br> 
 					<i class="material-icons">date_range</i> 
 					<label style="font-weight: bold;">Data de Nascimento:</label>
-					<span th:text="${#dates.format(ficha.dataNascimento, 'dd/MM/yyyy')}"></span> 
+					<span th:text="${ficha.dataNascimento}"></span> 
 					<br> 
 					<i class="material-icons">account_balance</i> 
 					<label style="font-weight: bold;">Paróquia:</label> 

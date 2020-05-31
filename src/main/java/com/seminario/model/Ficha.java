@@ -1,15 +1,11 @@
 package com.seminario.model;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Ficha implements Serializable{
@@ -23,9 +19,8 @@ private static final long serialVersionUID = 1L;
 	@NotBlank(message = "Preechimento do campo Nome é obrigatório.")
 	private String nome;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotNull(message = "Preechimento do campo Data é obrigatório.")
-	private Date dataNascimento;
+	@NotBlank(message = "Preenchimento do campo Data de Nascimento é obrigatório.")
+	private String dataNascimento;
 	
 	@NotBlank(message = "Preechimento do campo Paróquia é obrigatório.")
 	private String paroquia;
@@ -54,10 +49,10 @@ private static final long serialVersionUID = 1L;
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	public String getParoquia() {
