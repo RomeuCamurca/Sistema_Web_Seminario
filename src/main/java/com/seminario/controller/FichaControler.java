@@ -46,7 +46,7 @@ public class FichaControler {
 		return mv;
 	}
 	
-	//retorna o formulario da ficha
+	//retorna o formulario de adicionar ficha ficha
 	@RequestMapping(value="/cadastrarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioFicha(Ficha ficha) {
 		
@@ -67,5 +67,36 @@ public class FichaControler {
         attributes.addFlashAttribute("mensagem", "Cadastro da ficha realizado com sucesso.");
         return mv;
     }
+	
+	//retorna o formulario de atualizar ficha
+	@RequestMapping(value="/atualizarFicha", method = RequestMethod.GET)
+	public ModelAndView formularioAtFicha(Ficha ficha) {
+		
+		ModelAndView mv = new ModelAndView("formAtFicha");
+		mv.addObject("ficha", ficha);
+		
+		return mv;
+	}
+	
+	//usado para retornar a ficha em especifico para o formulario de adicionar
+	@RequestMapping(value="/atualizar/{id}", method = RequestMethod.GET)
+	public ModelAndView atualizarFicha(@PathVariable("id") Long id) {
+		
+		return formularioAtFicha(fichaService.buscarPorId(id));
+	}
+	
+	//utiliza o metodo de atualizar do fichaService para atualizar a ficha
+	@RequestMapping(value="/atualizarFicha", method=RequestMethod.POST)
+	public ModelAndView salvarFicha(@Valid Ficha ficha, BindingResult result, RedirectAttributes attributes) {
+		
+		if(result.hasErrors()) {
+			return formularioAtFicha(ficha);
+		}
+		
+		fichaService.atualizarFicha(ficha);
+		ModelAndView mv = new ModelAndView("redirect:/atualizarFicha");
+        attributes.addFlashAttribute("mensagem", "Ficha atualizada com sucesso.");
+        return mv;
+	}
 	
 }

@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<title>Amigos do Seminario</title>
+<title>Amigos do Seminário</title>
 
 <!-- link do bootstrap -->
 <link rel="stylesheet"
@@ -77,7 +77,7 @@ body {
 							<td><span th:text="${ficha.nome}"></span></td>
 							<td><span th:text="${ficha.endereco}"></span></td>
 							<td><span th:text="${ficha.telefone}"></span></td>
-							<td><button class="btn btn-primary"><img src="/img/edit.svg"></button></td>
+							<td><a th:href="@{/atualizar/{id} (id = ${ficha.id})}"><button class="btn btn-primary"><img src="/img/edit.svg"></button></a></td>
 							<td><button class="btn btn-primary"><img src="/img/trash.svg"></button></td>
 						</tr>
 					</tbody>
