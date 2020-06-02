@@ -94,9 +94,7 @@ public class FichaControler {
 		}
 		
 		fichaService.atualizarFicha(ficha);
-		ModelAndView mv = new ModelAndView("redirect:/atualizarFicha");
-        attributes.addFlashAttribute("mensagem", "Ficha atualizada com sucesso.");
-        return mv;
+        return detalhesFicha(ficha.getId());
 	}
 	
 }
