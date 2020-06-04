@@ -1,19 +1,18 @@
 package com.seminario.model;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.swing.JOptionPane;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class Ficha implements Serializable{
@@ -28,8 +27,8 @@ private static final long serialVersionUID = 1L;
 	private String nome;
 
 	@NotBlank(message = "Preenchimento do campo Data de Nascimento é obrigatório.")
-	@Size(min = 10, message = "Tamanho do campo Data de Nascimento inválido")
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@Size(min=10, message = "Tamanho do campo Data de Nascimento inválido")
+	@DateTimeFormat(pattern="dd/MM/yyyy") 
 	private String dataNascimento;
 	
 	@NotBlank(message = "Preechimento do campo Paróquia é obrigatório.")
@@ -39,7 +38,7 @@ private static final long serialVersionUID = 1L;
 	private String endereco;
 	
 	@NotBlank(message = "Preechimento do campo Telefone é obrigatório.")
-	@Size(min = 11, message = "Tamanho do campo telefone inválido")
+	@Size(min = 15, message = "Tamanho do campo Telefone inválido")
 	private String telefone;
 	
 	@NotBlank(message = "Preechimento do campo Valor Mensal de Contribuição é obrigatório.")
@@ -63,22 +62,8 @@ private static final long serialVersionUID = 1L;
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
-	public void setDataNascimento(String dataNascimento) {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-		
-		try {
-			
-			formato.setLenient(false); // está false para passar exatamente o formato exigido senão gera exceção.
-			Date data = formato.parse(dataNascimento);
-			this.dataNascimento = dataNascimento;
-			} catch (ParseException ex) {
-				ex.getMessage();
-				//JOptionPane.showMessageDialog(null,"data inválida");
-				  
-				
-			}
-		
-		
+	public void setDataNascimento(String dataNascimento) {	
+		this.dataNascimento = dataNascimento;
 	}
 	public String getParoquia() {
 		return paroquia;
