@@ -48,7 +48,7 @@
 		
 		<div class="card-body">
 	
-	<form class="container" th:object="${ficha}" th:action="@{/cadastrarFicha}" method="post" style="margin-top: -30px;">
+	<form class="container" id="formCadastrar" th:object="${ficha}" th:action="@{/cadastrarFicha}" method="post" style="margin-top: -30px;">
 	
 		<div class="form-group row">
 			<!-- Mensagem de sucesso -->
@@ -65,12 +65,12 @@
 		<div class="form-row">
 		   <div class="form-group col-md-10" th:classappend="${#fields.hasErrors('nome')}? 'has-error'"> 
 		      <label for="nome">Nome</label>
-		      <input type="text" class="form-control" th:field="*{nome}" placeholder="Digite o Nome Completo">
+		      <input type="text" name="nome" class="form-control" th:field="*{nome}" placeholder="Digite o Nome Completo">
 		    </div>
 		    
 		    <div class="form-group col-md-2" th:classappend="${#fields.hasErrors('dataNascimento')}? 'has-error'">
 		      <label for="dataNascimento">Data de Nascimento</label>
-		      <input type="text" id="dataNascimento" class="form-control" th:field="*{dataNascimento}">
+		      <input type="text" name="dataNascimento" id="dataNascimento" class="form-control" th:field="*{dataNascimento}">
 		    </div>
 		</div>
 				
@@ -126,19 +126,19 @@
     	
   		<div class="form-group">
   			<div th:classappend="${#fields.hasErrors('endereco')}? 'has-error'">
-    			<label for="enderoco">Endereço</label>
-    			<input type="text" class="form-control" th:field="*{endereco}" placeholder="Digite o Endereço">
+    			<label for="endereco">Endereço</label>
+    			<input type="text" name="endereco" class="form-control" th:field="*{endereco}" placeholder="Digite o Endereço">
     		</div>
   		</div>
 		
 		<div class="form-row">
     		<div class="form-group col-md-4" th:classappend="${#fields.hasErrors('telefone')}? 'has-error'">
       			<label for="telefone">Telefone</label>
-      			<input type="text" id="telefone" class="form-control" th:field="*{telefone}" placeholder="Digite o Número de Contato">
+      			<input type="text" name="telefone" id="telefone" class="form-control" th:field="*{telefone}" placeholder="Digite o Número de Contato">
     		</div>
     		<div class="form-group col-md-4" th:classappend="${#fields.hasErrors('valorMensal')}? 'has-error'">
       			<label for="valorMensal">Valor Mensal de Contribuição</label>
-      			<input type="text" id="valorMensal" class="form-control" th:field="*{valorMensal}" placeholder="Digite o Valor Mensal de Contribuição">
+      			<input type="text" name="valorMensal" id="valorMensal" class="form-control" th:field="*{valorMensal}" placeholder="Digite o Valor Mensal de Contribuição">
     		</div>
     		<div class="form-group col-md-4" th:classappend="${#fields.hasErrors('formaPagamento')}? 'has-error'">
       			<label for="formaPagamento">Forma de Pagamento</label>
@@ -151,7 +151,6 @@
     		</div>
     		
   		</div>
-  		
   		
   			<p><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
   			
@@ -166,6 +165,10 @@
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/jquery.maskMoney.min.js" type="text/javascript"></script>
     <script src="js/jquery-mascaras.js" type="text/javascript"></script>
+    <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="js/localization/messages_pt_BR.js" type="text/javascript"></script>
+    <script src="js/validacao.js" type="text/javascript"></script>
 	
 </body>
 

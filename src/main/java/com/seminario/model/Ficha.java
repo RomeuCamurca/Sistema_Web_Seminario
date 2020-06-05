@@ -1,18 +1,13 @@
 package com.seminario.model;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
 
 @Entity
 public class Ficha implements Serializable{
@@ -38,7 +33,7 @@ private static final long serialVersionUID = 1L;
 	private String endereco;
 	
 	@NotBlank(message = "Preechimento do campo Telefone é obrigatório.")
-	@Size(min = 15, message = "Tamanho do campo Telefone inválido")
+	@Size(min = 14, message = "Tamanho do campo Telefone inválido")
 	private String telefone;
 	
 	@NotBlank(message = "Preechimento do campo Valor Mensal de Contribuição é obrigatório.")
