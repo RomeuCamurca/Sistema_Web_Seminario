@@ -47,7 +47,7 @@ $.extend( $.validator.messages, {
 	creditcardtypes: "Por favor, forne&ccedil;a um n&uacute;mero de cart&atilde;o de cr&eacute;dito v&aacute;lido.",
 	currency: "Por favor, forne&ccedil;a uma moeda v&aacute;lida.",
 	dateFA: "Por favor, forne&ccedil;a uma data correta.",
-	dateITA: "Por favor, forne&ccedil;a uma data correta.",
+	dateITA: "Por favor, forne&ccedil;a uma data válida.",
 	dateNL: "Por favor, forne&ccedil;a uma data correta.",
 	extension: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
 	giroaccountNL: "Por favor, forne&ccedil;a um n&uacute;mero de conta corrente v&aacute;lido.",

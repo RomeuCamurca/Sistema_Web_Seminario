@@ -50,7 +50,7 @@ jQuery.validator.addMethod("dddValido", function(valor){
 		}, "Por favor, forneça um número válido.")
 		
     	$(document).ready(function() {
-    		$('#formCadastrar').validate({
+    		$('#formFicha').validate({
     			rules:{
     				nome: {
     					required: true,
