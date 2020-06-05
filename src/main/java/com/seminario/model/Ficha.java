@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,11 +20,12 @@ private static final long serialVersionUID = 1L;
 	private long id;
 	
 	@NotBlank(message = "Preechimento do campo Nome é obrigatório.")
+	@Pattern(regexp = "^[A-Za-z]+$", message ="Nome inválido")
 	private String nome;
 
 	@NotBlank(message = "Preenchimento do campo Data de Nascimento é obrigatório.")
 	@Size(min=10, message = "Tamanho do campo Data de Nascimento inválido")
-	@DateTimeFormat(pattern="dd/MM/yyyy") 
+	@Pattern(regexp = "(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}" , message = "Data inválida") 
 	private String dataNascimento;
 	
 	@NotBlank(message = "Preechimento do campo Paróquia é obrigatório.")
