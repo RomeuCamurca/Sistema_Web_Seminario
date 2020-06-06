@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Ficha implements Serializable{
@@ -20,7 +19,7 @@ private static final long serialVersionUID = 1L;
 	private long id;
 	
 	@NotBlank(message = "Preechimento do campo Nome é obrigatório.")
-	@Pattern(regexp = "^[A-Za-z]+$", message ="Nome inválido")
+	//@Pattern(regexp = "^[A-Za-z]+$", message ="Nome inválido")
 	private String nome;
 
 	@NotBlank(message = "Preenchimento do campo Data de Nascimento é obrigatório.")
