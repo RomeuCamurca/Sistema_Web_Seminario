@@ -49,14 +49,25 @@ jQuery.validator.addMethod("dddValido", function(valor){
 			  }
 		}, "Por favor, forneça um número válido.")
 		
+		jQuery.validator.addMethod("nomeValido", function(valor){
+			const regex = /[0-9]/;
+			var resultado = regex.test(valor);
+			if (resultado == true){ 
+				return false
+			} else {
+				return true
+			  }
+		}, "Por favor, forneça um nome sem conter números.")
+		
     	$(document).ready(function() {
     		$('#formFicha').validate({
     			rules:{
     				nome: {
     					required: true,
-    					maxlength: 200,
-    					minlength: 10,
-    					minWords: 2
+    					maxlength: 100,
+    					minlength: 5,
+    					minWords: 2,
+    					nomeValido: true
     				},
     				dataNascimento: {
     					required: true,
@@ -78,7 +89,9 @@ jQuery.validator.addMethod("dddValido", function(valor){
     					tamanhoTelefoneValido: true
     				},
     				valorMensal: {
-    					required: true
+    					required: true,
+    					maxlength: 30,
+    					minlength: 8
     				},
     				formaPagamento: {
     					required: true
