@@ -94,7 +94,18 @@ public class FichaControler {
 		}
 		
 		fichaService.atualizarFicha(ficha);
-        return detalhesFicha(ficha.getId());
+		ModelAndView mv = new ModelAndView("redirect:/fichas");
+        attributes.addFlashAttribute("mensagem", "Ficha atualizada com sucesso.");
+        return mv;
+	}
+	
+	//metodo responsavel por deletar uma ficha em especifico
+	@RequestMapping(value="/deletar/{id}", method = RequestMethod.GET)
+	public ModelAndView deletarFicha(@PathVariable("id") Long id, RedirectAttributes attributes) {
+		fichaService.removerFicha(id);
+		ModelAndView mv = new ModelAndView("redirect:/fichas");
+		attributes.addFlashAttribute("mensagem", "Ficha removida com sucesso.");
+		return mv;
 	}
 	
 }
