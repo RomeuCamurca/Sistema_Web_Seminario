@@ -8,7 +8,7 @@ $(document).ready(function () {
         $('#id_Do_Modal_Do_Deletar').modal({backdrop: 'static', keyboard: false});
     });
     
-  //ação de fechar o modal depois de 2 segundos
+  //ação de fechar a mensagem de sucesso depois de 2 segundos
 	setTimeout(function() {
         $("#alertaRemovido").alert('close');
     }, 2000);

@@ -52,7 +52,7 @@
 	
 		<div class="form-group row">
 			<!-- Mensagem de sucesso -->
-			<div class="alert alert-success" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+			<div class="alert alert-success" id="alertaCadastrado" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
 			
 			<!-- Mensagem de erro -->
 			<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
@@ -169,6 +169,15 @@
     <script src="js/additional-methods.min.js" type="text/javascript"></script>
     <script src="js/localization/messages_pt_BR.js" type="text/javascript"></script>
     <script src="js/validacao.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function () {
+      	//ação de fechar a mensagem de sucesso depois de 2 segundos
+    	setTimeout(function() {
+            $("#alertaCadastrado").alert('close');
+        }, 2000);
+    });
+    </script>
 	
 </body>
 
