@@ -40,7 +40,7 @@ private static final long serialVersionUID = 1L;
 	private String endereco;
 	
 	@NotBlank(message = "Preechimento do campo Telefone é obrigatório.")
-	@Size(min = 15, message = "Tamanho do campo Telefone inválido")
+	@Size(min = 14, message = "Tamanho do campo Telefone inválido")
 	private String telefone;
 	
 	@NotBlank(message = "Preechimento do campo Valor Mensal de Contribuição é obrigatório.")
