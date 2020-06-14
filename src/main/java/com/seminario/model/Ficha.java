@@ -24,7 +24,7 @@ private static final long serialVersionUID = 1L;
 			+ "\\\\úÚ\\\\ùÙ\\\\çÇaA-zZ]+)+((\\s[\\'\\.\\^\\~\\´\\`\\\\áÁ"
 			+ "\\\\àÀ\\\\ãÃ\\\\âÂ\\\\éÉ\\\\èÈ\\\\êÊ\\\\íÍ\\\\ìÌ\\\\óÓ\\\\òÒ"
 			+ "\\\\õÕ\\\\ôÔ\\\\úÚ\\\\ùÙ\\\\çÇaA-zZ]+)+)?$", message ="Nome inválido")
-	@Size(min=5, max=200, message = "Digite um Nome entre {min} e {max} caracteres")
+	@Size(min=5, max=100, message = "Digite um Nome entre {min} e {max} caracteres")
 	private String nome;
 
 	@NotBlank(message = "Preenchimento do campo Data de Nascimento é obrigatório.")
@@ -40,7 +40,7 @@ private static final long serialVersionUID = 1L;
 	private String endereco;
 	
 	@NotBlank(message = "Preechimento do campo Telefone é obrigatório.")
-	@Size(min = 14, message = "Tamanho do campo Telefone inválido")
+	@Size(min = 14, max=15, message = "Tamanho do campo Telefone inválido")
 	private String telefone;
 	
 	@NotBlank(message = "Preechimento do campo Valor Mensal de Contribuição é obrigatório.")
