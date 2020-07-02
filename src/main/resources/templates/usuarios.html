@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4">
+	
 
 
 <head>
@@ -41,7 +43,7 @@ body {
 			
 			<div class="dropdown" style="margin-right: 30px; margin-top: -20px;">
 			  <button class="btn btn-primary dropdown-toggle" style=" color: black; font-weight: bold;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    <img src="/img/at-sign.svg"> SILMARA
+			    <img src="/img/at-sign.svg"><span sec:authentication="usuario.nomecompleto"></span>
 			  </button>
 			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			    <a class="dropdown-item" href="/detalhesUsuario">Conta</a>
