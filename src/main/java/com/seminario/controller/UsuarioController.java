@@ -35,7 +35,7 @@ public class UsuarioController {
 	@PostMapping("/adicionar")
 	public ModelAndView addUser(Usuario usuario) {
 		usuarioService.adicionarUsuario(usuario);
-		ModelAndView mv = new ModelAndView("adicionarUser"); 
+		ModelAndView mv = new ModelAndView("formUser"); 
 		return mv;
 	}
 	

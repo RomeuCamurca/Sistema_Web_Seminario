@@ -3,6 +3,7 @@ package com.seminario.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.seminario.model.Usuario;
@@ -14,6 +15,7 @@ public class UsuarioService {
 	UsuarioRepository usuarioRepository;
 
 	public void adicionarUsuario(Usuario usuario) {
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		usuarioRepository.save(usuario);
 	}
 	
@@ -31,10 +33,11 @@ public class UsuarioService {
 	
 	public int ContUser() {
 		return (int) usuarioRepository.count();
+		
 	}
 	
 	public Usuario retornaUser(Long id) {
 		return usuarioRepository.getOne(id);
-	}
+	}	
 	
 }
