@@ -17,8 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class Usuario implements UserDetails, Serializable{
