@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers(HttpMethod.GET,"/atualizarFicha").hasRole("ADMIN")
 				.antMatchers(HttpMethod.POST,"/atualizarFicha").hasRole("ADMIN")
 				.antMatchers(HttpMethod.GET,"/atualizar/{id}").hasRole("ADMIN")
+				.antMatchers(HttpMethod.GET,"/usuario/users").hasRole("ADMIN")
 				.anyRequest().authenticated()
 				.and().formLogin().loginPage("/usuario/logar").defaultSuccessUrl("/",true)
 				.failureUrl("/usuario/logar").permitAll()

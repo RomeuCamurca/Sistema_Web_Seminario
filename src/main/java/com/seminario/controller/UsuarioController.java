@@ -20,25 +20,14 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	@GetMapping("/formulario")
-	public ModelAndView formUser() {
-		ModelAndView mv = new ModelAndView("formUser"); 
-		return mv;
-	}
-	
-	
 	@PostMapping("/adicionar")
-	public ModelAndView addUser(Usuario usuario) {
+	public ResponseEntity<Integer> adicionar(Usuario usuario){
 		usuarioService.adicionarUsuario(usuario);
-		ModelAndView mv = new ModelAndView("formUser"); 
-		return mv;
+		return new ResponseEntity<Integer>(1,HttpStatus.OK);
 	}
 	
-	@GetMapping("/count")
-	public ResponseEntity <Usuario> ContUser(){
-		Usuario user = usuarioService.retornaUser((long)1);
-		return new ResponseEntity <Usuario> (user, HttpStatus.OK);
-	}
+	
+
 	
 	@PostMapping("/atualizar")
 	public ModelAndView attUser(Usuario usuario) {

@@ -1,5 +1,5 @@
-//mascara da data de nascimento
 $(document).ready(
+		//mascara da data de nascimento
 		function() {
 			$('#dataNascimento').mask('00/00/0000', {
 				placeholder : "__/__/____"
