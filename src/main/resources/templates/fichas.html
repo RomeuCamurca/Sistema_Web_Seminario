@@ -36,10 +36,18 @@ body {
 				<img src="/img/2.png" class="img-circle"
 				style="max-width: 90px; max-height: 90px;" /> ASSOCIAÇÃO AMIGOS DO
 				SEMINÁRIO
-			</span> <a href="/cadastrarFicha"><button class="btn btn-primary"
-					style="margin-top: -50px; color: black; font-weight: bold;">
-					CADASTRAR FICHA <img src="/img/plus-circle.svg">
-				</button></a>
+			</span> 
+			
+			<div class="dropdown" style="margin-right: 30px; margin-top: -20px;">
+			  <button class="btn btn-primary dropdown-toggle" style=" color: black; font-weight: bold;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    <img src="/img/at-sign.svg"> FELIPE
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			  	<a class="dropdown-item" href="/">Menu</a>
+			    <a class="dropdown-item" href="/detalhesUsuario">Conta</a>
+			    <a class="dropdown-item" href="/logout">Sair</a>
+			  </div>
+			</div>
 		</nav>
 	</header>
 
@@ -48,8 +56,8 @@ body {
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb"
 				style="background-color: white; padding-left: 0px; font-weight: bold; font-size: 18px;">
-				<li class="breadcrumb-item active" aria-current="page">LISTA DE
-					FICHAS</li>
+				<li class="breadcrumb-item active" aria-current="page">LISTA DE FICHAS</li>
+				<li><a href="/cadastrarFicha"><button class="btn btn-primary" style="color: black; font-weight: bold; margin-left: 877px; margin-top: -25px;">CADASTRAR FICHA<img style="margin-left: 5px; margin-top: -2px;" src="/img/plus-circle.svg"></button></a></li>
 			</ol>
 		</nav>
 

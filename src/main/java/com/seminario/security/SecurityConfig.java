@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -32,16 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers(HttpMethod.POST,"/atualizarFicha").hasRole("ADMIN")
 				.antMatchers(HttpMethod.GET,"/atualizar/{id}").hasRole("ADMIN")
 				.anyRequest().authenticated()
-		.and()
-			.formLogin()
-			//.loginPage("/login")//página de login personalizada
-			.permitAll()
-		.and()
-			.logout()
-			//.logoutSuccessUrl("/login?logout").permitAll()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-		//.and()
-			//.exceptionHandling().accessDeniedPage("/403");
+				.and().formLogin().loginPage("/usuario/logar").defaultSuccessUrl("/",true)
+				.failureUrl("/usuario/logar").permitAll()
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/usuario/logar").permitAll();
 	}
 	
 	@Override
