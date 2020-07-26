@@ -174,8 +174,9 @@ body {
     		</div>	
 			
 			<p style="margin-top: 20px;"><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
-				
+			
 			<button class="btn btn-primary" id="btnSalvar" style="margin-top: 20px;">Cadastrar</button>	
+			<button class="btn btn-secondary" data-dismiss="modal" type="button" style="margin-top: 20px;">Cancelar</button>
 			
           </form>
         </div>
@@ -229,7 +230,7 @@ body {
 		            $("#alert_modal_sucesso").modal("show");
 		          	$("#form_modal").modal("hide");
 		          	setTimeout(function() {
-			            $("#alert_modal").modal("hide");
+			            $("#alert_modal_sucesso").modal("hide");
 			        }, 2000);
 		          	
 		          	$(function() {
@@ -239,6 +240,13 @@ body {
 		            $("#alert_msg_erro").html('<h5 style="color: black; font-weight: bold;"> Erro, usuário já existe!</h5>');
 		            $("#alert_modal_erro").modal("show");
 		            $("#form_modal").modal("hide");
+		            setTimeout(function() {
+			            $("#alert_modal_erro").modal("hide");
+			        }, 2000);
+		          	
+		          	$(function() {
+		          	    setTimeout(function(){ location.reload(); }, 2500);
+		          	});
 		          } 
 		      });
 		    });
