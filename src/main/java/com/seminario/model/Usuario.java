@@ -45,13 +45,14 @@ public class Usuario implements UserDetails, Serializable{
 		
 	}
 	
-	public Usuario(long id, String login, String nomecompleto, String telefone, String email, String senha) {
+	public Usuario(long id, String login, String nomecompleto, String telefone, String email, String senha, String permissao) {
 		this.id = id;
 		this.login = login;
 		this.nomecompleto = nomecompleto;
 		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
+		this.permissao = permissao;
 	}
 
 	@ManyToMany(fetch= FetchType.EAGER)

@@ -12,4 +12,12 @@ $(document).ready(function () {
 	setTimeout(function() {
         $("#alertaRemovido").alert('close');
     }, 2000);
+
+
+	//evitar que com botão (Esc) feche o modal e evitar que clicar fora do modal o feche
+	$('#botaoAdicionar').on('click', function (evento) {
+        evento.preventDefault();
+        $('#form_modal').modal({backdrop: 'static', keyboard: false});
+    });
+	
 });

@@ -42,7 +42,7 @@ body {
 			</span>
 			
 			<div class="dropdown" style="margin-right: 30px; margin-top: -20px;">
-			  <button class="btn btn-primary dropdown-toggle" style=" color: black; font-weight: bold;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  <button class="btn btn-primary dropdown-toggle" style="color: black; font-weight: bold;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    <img src="/img/at-sign.svg"> USUÁRIO
 			  </button>
 			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -55,20 +55,33 @@ body {
 		</nav>
 	</header>
 	
-	<!-- Modal da mensagem de sucesso ou de já existente-->
-	<div id="alert_modal" class="modal fade hide" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header" style="background-color: #D4EDDA">
-          <h5 id="alert_msg" class="modal-title"></h5>
-          <button class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+	<!-- Modal da mensagem de sucesso em adicionar usuário-->
+	<div id="alert_modal_sucesso" class="modal fade hide" tabindex="-1" role="dialog" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content">
+	        <div class="modal-header" style="background-color: #D4EDDA">
+	          <h5 id="alert_msg_sucesso" class="modal-title"></h5>
+	          <button class="close" data-dismiss="modal" aria-label="Close">
+	            <span aria-hidden="true">×</span>
+	          </button>
+	        </div>
+	      </div>
+	    </div>
+	</div>
 	
+	<!-- Modal da mensagem de erro em adicionar usuário-->
+	<div id="alert_modal_erro" class="modal fade hide" tabindex="-1" role="dialog" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content">
+	        <div class="modal-header" style="background-color: #F8D7DA">
+	          <h5 id="alert_msg_erro" class="modal-title"></h5>
+	          <button class="close" data-dismiss="modal" aria-label="Close">
+	            <span aria-hidden="true">×</span>
+	          </button>
+	        </div>
+	      </div>
+	    </div>
+	</div>
 	
 	<div class="card container">
 	
@@ -76,7 +89,7 @@ body {
 		<ol class="breadcrumb"
 			style="background-color: white; padding-left: 0px; font-weight: bold; font-size: 18px;">
 			<li class="breadcrumb-item active" aria-current="page">LISTA DE USUÁRIOS</li>
-			<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form_modal" style="color: black; font-weight: bold; margin-left: 840px; margin-top: -25px;">CADASTRAR USUÁRIO<img style="margin-left: 5px; margin-top: -3px;" src="/img/plus-circle.svg"></button></li>
+			<li><button type="button" class="btn btn-primary" id="botaoAdicionar" data-toggle="modal" data-target="#form_modal" style="color: black; font-weight: bold; margin-left: 840px; margin-top: -25px;">CADASTRAR USUÁRIO<img style="margin-left: 5px; margin-top: -3px;" src="/img/plus-circle.svg"></button></li>
 		</ol>
 	</nav>
 	<div class="card-body"> 
@@ -179,6 +192,7 @@ body {
     <script src="/js/additional-methods.min.js" type="text/javascript"></script>
     <script src="/js/localization/messages_pt_BR.js" type="text/javascript"></script>
     <script src="/js/validacao.js" type="text/javascript"></script>
+    <script src="/js/modals.js" type="text/javascript"></script>
     
     <!-- js do datatables -->
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -209,9 +223,10 @@ body {
 		      event.preventDefault();
 		      var dados = $("#form_add").serialize();
 		      $.post("/usuario/adicionar", dados, function (retorna) {
+		    	  
 		        if (retorna == 1) {
-		        	$("#alert_msg").html('<h5 style="color: black; font-weight: bold;">Usuário Adicionado</h5>');
-		            $("#alert_modal").modal("show");
+		        	$("#alert_msg_sucesso").html('<h5 style="color: black; font-weight: bold;">Usuário Adicionado com sucesso!</h5>');
+		            $("#alert_modal_sucesso").modal("show");
 		          	$("#form_modal").modal("hide");
 		          	setTimeout(function() {
 			            $("#alert_modal").modal("hide");
@@ -220,7 +235,11 @@ body {
 		          	$(function() {
 		          	    setTimeout(function(){ location.reload(); }, 2500);
 		          	});
-		        } 
+		        } else {
+		            $("#alert_msg_erro").html('<h5 style="color: black; font-weight: bold;"> Erro, usuário já existe!</h5>');
+		            $("#alert_modal_erro").modal("show");
+		            $("#form_modal").modal("hide");
+		          } 
 		      });
 		    });
 	</script>
