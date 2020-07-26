@@ -1,10 +1,10 @@
 package com.seminario.controller;
 
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.seminario.model.Ficha;
+import com.seminario.model.Usuario;
 import com.seminario.service.FichaService;
+import com.seminario.service.UsuarioService;
 
 @Controller	
 public class FichaControler {
@@ -22,17 +23,33 @@ public class FichaControler {
 	@Autowired
 	FichaService fichaService;
 	
+	@Autowired
+	UsuarioService usuarioService;
+	
 	//retorna a página inicial
 	@RequestMapping("/")
-    public String index(){
-        return "index";
+    public ModelAndView index(){
+		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails user = (UserDetails) auth;
+		
+		Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
+        
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("logado", logado);
+		return mv;
     }
 	
 	//lista todas as fichas
 	@RequestMapping(value = "/fichas", method = RequestMethod.GET)
 	public ModelAndView listaFichas() {
+		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails user = (UserDetails) auth;
+		
+		Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
+		
 		ModelAndView mv = new ModelAndView("fichas"); 
 		List<Ficha> fichas = fichaService.listaFichas();
+		mv.addObject("logado", logado);
 		mv.addObject("fichas", fichas);
 		return mv;
 	}
@@ -40,8 +57,14 @@ public class FichaControler {
 	//listar os detalhes de uma ficha
 	@RequestMapping("/fichas/{id}")
 	public ModelAndView detalhesFicha(@PathVariable("id") long id) {
+		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails user = (UserDetails) auth;
+		
+		Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
+		
 		Ficha ficha = fichaService.buscarPorId(id);
 		ModelAndView mv = new ModelAndView("detalhesFicha");
+		mv.addObject("logado", logado);
 		mv.addObject("ficha", ficha);
 		return mv;
 	}
@@ -49,8 +72,13 @@ public class FichaControler {
 	//retorna o formulario de adicionar ficha ficha
 	@RequestMapping(value="/cadastrarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioFicha(Ficha ficha) {
+		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails user = (UserDetails) auth;
+		
+		Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
 		
 		ModelAndView mv = new ModelAndView("formFicha");
+		mv.addObject("logado", logado);
 		mv.addObject("ficha", ficha);
 		
 		return mv;
@@ -71,8 +99,13 @@ public class FichaControler {
 	//retorna o formulario de atualizar ficha
 	@RequestMapping(value="/atualizarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioAtFicha(Ficha ficha) {
+		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails user = (UserDetails) auth;
+		
+		Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
 		
 		ModelAndView mv = new ModelAndView("formAtFicha");
+		mv.addObject("logado", logado);
 		mv.addObject("ficha", ficha);
 		
 		return mv;

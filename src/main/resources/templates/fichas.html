@@ -40,7 +40,8 @@ body {
 			
 			<div class="dropdown" style="margin-right: 30px; margin-top: -20px;">
 			  <button class="btn btn-primary dropdown-toggle" style=" color: black; font-weight: bold;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    <img src="/img/at-sign.svg"> USUÁRIO
+			    <img src="/img/at-sign.svg">
+			    <span th:text="${logado.login}"></span>
 			  </button>
 			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			  	<a class="dropdown-item" href="/">Menu</a>
