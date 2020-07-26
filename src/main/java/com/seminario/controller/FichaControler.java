@@ -26,19 +26,6 @@ public class FichaControler {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	//retorna a página inicial
-	@RequestMapping("/")
-    public ModelAndView index(){
-		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails user = (UserDetails) auth;
-		
-		Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
-        
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("logado", logado);
-		return mv;
-    }
-	
 	//lista todas as fichas
 	@RequestMapping(value = "/fichas", method = RequestMethod.GET)
 	public ModelAndView listaFichas() {
