@@ -14,6 +14,7 @@ public class UsuarioService {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
+	
 	public void adicionarUsuario(Usuario usuario) {
 		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		usuarioRepository.save(usuario);
@@ -28,6 +29,11 @@ public class UsuarioService {
 	}
 	
 	public void atualizarUsuario(Usuario usuario) {
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+		usuarioRepository.save(usuario);
+	}
+	
+	public void addPUser(Usuario usuario) {
 		usuarioRepository.save(usuario);
 	}
 	
@@ -39,5 +45,13 @@ public class UsuarioService {
 	public Usuario retornaUser(Long id) {
 		return usuarioRepository.getOne(id);
 	}	
+	
+	public boolean userExist(long id) {
+		return usuarioRepository.existsById(id);
+	}
+	
+	public Usuario buscarPorLogin(String login) {
+		return usuarioRepository.findByLogin(login);
+	}
 	
 }
