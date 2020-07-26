@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,9 +40,21 @@ public class Usuario implements UserDetails, Serializable{
 	
 	private String permissao;
 	
+
+	public Usuario() {
+		
+	}
 	
-	
-	@ManyToMany
+	public Usuario(long id, String login, String nomecompleto, String telefone, String email, String senha) {
+		this.id = id;
+		this.login = login;
+		this.nomecompleto = nomecompleto;
+		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
+	}
+
+	@ManyToMany(fetch= FetchType.EAGER)
 	@JoinTable( 
 	        name = "usuario_roles", 
 	        joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"), 
