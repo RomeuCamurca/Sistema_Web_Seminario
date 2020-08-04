@@ -10,8 +10,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seminario.model.Role;
@@ -89,6 +91,12 @@ public class UsuarioController {
 		mv.addObject("logado", logado);
 		mv.addObject("usuarios", usuarios);
 		return mv;
+	}
+	
+	@RequestMapping(value="/deletar/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> deletarUsuario(@PathVariable("id") Long id) {
+		usuarioService.removerUsuario(id);
+		return new ResponseEntity<Integer>(1,HttpStatus.OK);
 	}
 	
 	@RequestMapping("/logar")

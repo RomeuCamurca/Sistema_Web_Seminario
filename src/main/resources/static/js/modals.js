@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	
-	//evento que possibilita o exibir e manipular o modal
+	//evento que possibilita o exibir e manipular o modal de deletar ficha
     $('#id_da_tabela #botao_Do_Deletar').on('click', function (evento) {
         evento.preventDefault();
         var href = $(this).attr('href');

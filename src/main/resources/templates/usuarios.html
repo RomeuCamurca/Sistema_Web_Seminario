@@ -56,7 +56,7 @@ body {
 		</nav>
 	</header>
 	
-	<!-- Modal da mensagem de sucesso em adicionar usuário-->
+	<!-- Modal da mensagem de sucesso em adicionar e remover usuário-->
 	<div id="alert_modal_sucesso" class="modal fade hide" tabindex="-1" role="dialog" aria-hidden="true">
 	    <div class="modal-dialog" role="document">
 	      <div class="modal-content">
@@ -95,8 +95,32 @@ body {
 	</nav>
 	<div class="card-body"> 
 	
+		<!-- Modal do botão de deletar usuário-->
+		<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="id_Do_Modal_Do_Deletar_usuario" role="dialog" tabindex="-1">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <div class="modal-header" style="background-color: #e3f2fd; color: black; font-weight: bold;">
+	                    <h5 class="modal-title" id="myModalLabel" style="color: black; font-weight: bold;">DELETAR USUÁRIO</h5>
+	                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+	                    	<span aria-hidden="true">&times;</span>
+	                    </button>
+	                    
+	                </div>
+	                <div class="modal-body">
+	                    <p class="alert" style="font-weight: bold;">
+	                        Tem certeza de que deseja excluir o usuário selecionado?
+	                    </p>
+	                </div>
+	                <div class="modal-footer" style="background-color: #e3f2fd;">
+	                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
+	                    <a class="btn btn-primary" style="color: white;" id="botao_De_Deletar_Modal">Deletar</a>
+	                </div>
+	            </div>
+	        </div>
+    </div> 
+	
 		<div class="container">
-			<table class="table table-bordered text-center table-hover" id="id_da_tabela">
+			<table class="table table-bordered text-center table-hover" id="id_da_tabela_usuarios">
 				<thead>
 					<tr>
 						<th>Login</th>
@@ -114,7 +138,7 @@ body {
 						<td><span th:text="${usuario.email}"></span></td>
 						<td><span th:text="${usuario.telefone}"></span></td>
 						<td><a><button class="btn btn-primary"><img src="/img/edit.svg"></button></a></td>
-						<td><a><button class="btn btn-primary"><img src="/img/trash.svg"></button></a></td>
+						<td><button class="btn btn-primary" th:value="${usuario.id}" onclick="removeUsuario(this.value)"><img src="/img/trash.svg"></button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -201,7 +225,7 @@ body {
 	
 	<script>
 		$(document).ready(function() {
-			$('#id_da_tabela').DataTable({
+			$('#id_da_tabela_usuarios').DataTable({
 				"language" : {
 					"lengthMenu" : "Mostrando _MENU_ registros por página",
 					"zeroRecords" : "Nada encontrado",
@@ -246,11 +270,43 @@ body {
 			        }, 2000);
 		          	
 		          	$(function() {
-		          	    setTimeout(function(){ location.reload(); }, 2500);
+		          	    setTimeout(function(){ location.reload(); }, 2000);
 		          	});
 		          } 
 		      });
 		    });
+	</script>
+	
+	<script type="text/javascript">
+	
+		function removeUsuario(id) {	
+			
+			$('#id_Do_Modal_Do_Deletar_usuario').modal("show");
+			
+			 $('#botao_De_Deletar_Modal').on('click', function () {
+				 				 
+				 $.get("/usuario/deletar/" + id, function (retorna) {
+					 
+					 $('#id_Do_Modal_Do_Deletar_usuario').modal("hide");
+			    	  
+				        if (retorna == 1) {
+				        	$("#alert_msg_sucesso").html('<h5 style="color: black; font-weight: bold;">Usuário removido com sucesso!</h5>');
+				            $("#alert_modal_sucesso").modal("show");
+				            
+				          	setTimeout(function() {
+					            $("#alert_modal_sucesso").modal("hide");
+					        }, 2000);
+				          	
+				          	$(function() {
+				          	    setTimeout(function(){ location.reload(); }, 2000);
+				          	});
+				        }  
+				      });
+			 });
+			
+		}
+		
+	   
 	</script>
 	
 	<script type="text/javascript">
