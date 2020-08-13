@@ -3,7 +3,6 @@ package com.seminario.model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,18 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class Usuario implements UserDetails, Serializable{
 	
 	
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -60,6 +57,7 @@ public class Usuario implements UserDetails, Serializable{
 	        name = "usuario_roles", 
 	        joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"), 
 	        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "nomeRole"))
+	@JsonManagedReference
 	private List<Role> roles;
 	
 	public String getLogin() {

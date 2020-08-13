@@ -39,13 +39,21 @@ body {
 	    <form method="post" action="/usuario/logar">
 	    	<div>
 		    	<div class="col">
-		    		<label style="color: black; font-weight: bold;">Login</label>
-			    	<input type="text" class="form-control" name="username" placeholder="USUÁRIO">
+		    		<div>
+			    		<label style="color: black; font-weight: bold;">Login</label>
+			    		<div style="display: flex; align-items: center; justify-content: space-between;"> 
+				    		<img alt="cadeado" src="/img/at-sign.svg" style="padding: 10px 0px; ">
+					    	<input type="text" class="form-control" name="username" style="margin-left: 8px;"  placeholder="USUÁRIO">
+				    	</div>
+			    	</div>
 			    </div>
 			    
 			    <div class="col" style="margin-top: 10px;">
 			    	<label style="color: black; font-weight: bold;">Password</label>
-	            	<input type="password" class="form-control" name="password" placeholder="SENHA">
+			    	<div style="display: flex; align-items: center; justify-content: space-between;">
+			    		<img alt="cadeado" src="/img/lock.svg" style="padding: 10px 0px; ">
+	            		<input type="password" class="form-control" name="password" style="margin-left: 8px;" placeholder="SENHA">
+	            	</div>
 	            </div>
             </div>
             

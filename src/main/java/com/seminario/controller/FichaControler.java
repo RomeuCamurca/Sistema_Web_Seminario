@@ -128,4 +128,32 @@ public class FichaControler {
 		return mv;
 	}
 	
+		@RequestMapping(value = "/paroquias", method = RequestMethod.GET)
+		public ModelAndView listaFichasParoquias() {
+			Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			UserDetails user = (UserDetails) auth;
+			
+			Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
+			
+			ModelAndView mv = new ModelAndView("filtroParoquia"); 
+			List<Ficha> fichas = fichaService.listaFichas();
+			mv.addObject("logado", logado);
+			mv.addObject("fichas", fichas);
+			return mv;
+		}
+		
+		@RequestMapping(value = "/exportar", method = RequestMethod.GET)
+		public ModelAndView exportarFichas() {
+			Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			UserDetails user = (UserDetails) auth;
+			
+			Usuario logado = usuarioService.buscarPorLogin(user.getUsername());
+			
+			ModelAndView mv = new ModelAndView("exportarFichas"); 
+			List<Ficha> fichas = fichaService.listaFichas();
+			mv.addObject("logado", logado);
+			mv.addObject("fichas", fichas);
+			return mv;
+		}
+	
 }

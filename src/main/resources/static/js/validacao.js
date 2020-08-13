@@ -131,4 +131,35 @@ jQuery.validator.addMethod("dddValido", function(valor){
     		})
     	})
 
-
+	
+	
+	$(document).ready(function() {
+    		$('#form_edit').validate({
+    			rules:{
+    				nomecompleto: {
+    					required: true,
+    					maxlength: 100,
+    					minlength: 5,
+    					minWords: 2,
+    					nomeValido: true
+    				},
+    				telefone: {
+    					required: true,
+    					dddValido: true,
+    					fixoValido: true,
+    					celularValido: true,
+    					tamanhoTelefoneValido: true
+    				},
+					email: {
+						required: true,
+						email: true
+					},
+					login: {
+						required: true,
+					},
+					senha: {
+						required: true,
+					}
+    			}
+    		})
+    	})

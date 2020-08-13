@@ -29,7 +29,6 @@ public class UsuarioService {
 	}
 	
 	public void atualizarUsuario(Usuario usuario) {
-		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		usuarioRepository.save(usuario);
 	}
 	

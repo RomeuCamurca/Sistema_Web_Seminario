@@ -62,20 +62,66 @@ public class UsuarioController {
 	}
 	
 	
+	@PostMapping("/editusuario")
+	public ResponseEntity<Integer> atualizar(Usuario usuario) {
+		
+		Usuario user = usuarioService.buscarPorLogin(usuario.getLogin());
+		
+		String senha = user.getPassword();
+		
+		if (usuario.getSenha().equals("vazio")) {
+			usuario.setSenha(senha);
+			
+			String permissao = usuario.getPermissao();
+			String roleUser;
+			
+			if (permissao.equals("A")) {
+				roleUser ="ROLE_ADMIN";
+			}else {
+				roleUser="ROLE_USER";
+			}
+			
+			Role role = new Role();
+			List<Usuario> usuarios = new ArrayList<Usuario>();
+			List<Role> roles = new ArrayList<Role>();
+			role.setNomeRole(roleUser); 
+			usuarios.add(usuario); 
+			roles.add(role); 
+			role.setUsuarios(usuarios); 
+			usuario.setRoles(roles); 
+			
+			usuarioService.atualizarUsuario(usuario);
+		}
+		
+		else {
+			String permissao = usuario.getPermissao();
+			String roleUser;
+			
+			if (permissao.equals("A")) {
+				roleUser ="ROLE_ADMIN";
+			}else {
+				roleUser="ROLE_USER";
+			}
+			
+			Role role = new Role();
+			List<Usuario> usuarios = new ArrayList<Usuario>();
+			List<Role> roles = new ArrayList<Role>();
+			role.setNomeRole(roleUser); 
+			usuarios.add(usuario); 
+			roles.add(role); 
+			role.setUsuarios(usuarios); 
+			usuario.setRoles(roles); 
+			usuarioService.adicionarUsuario(usuario);
+		}
+			
+		return new ResponseEntity<Integer>(1,HttpStatus.OK);
 	
-	@GetMapping("/atualizar")
-	public ModelAndView attUserGet(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("atualizarUser"); 
-		mv.addObject("usuario", usuario);
-		return mv;
 	}
 	
-	
-	@PostMapping("/atualizar")
-	public ModelAndView attUser(Usuario usuario) {
-		usuarioService.atualizarUsuario(usuario);
-		ModelAndView mv = new ModelAndView("redirect:/usuarios"); 
-		return mv;
+	@GetMapping("/getusuario/{id}")
+	public ResponseEntity<Usuario> getUsuario(@PathVariable long id){
+		Usuario usuario = usuarioService.retornaUser(id);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);	
 	}
 	
 	
