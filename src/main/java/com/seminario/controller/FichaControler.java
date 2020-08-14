@@ -80,17 +80,20 @@ public class FichaControler {
         
         Ficha fichaVerificar = fichaService.buscarPorNome(ficha.getNome());
         
-        if (fichaVerificar.getNome().equals(ficha.getNome())) {
-        	 ModelAndView mv = new ModelAndView("redirect:/cadastrarFicha");
-             attributes.addFlashAttribute("mensagem", "A Ficha que você tentou cadastrar já existe.");
-             return mv;
+        if (fichaVerificar == null) {
+        	fichaService.adicionarFicha(ficha);
+	        ModelAndView mv = new ModelAndView("redirect:/cadastrarFicha");
+	        attributes.addFlashAttribute("mensagem", "Cadastro da ficha realizado com sucesso.");
+	        return mv;
+        	
+        }else {
+        	ModelAndView mv = new ModelAndView("redirect:/cadastrarFicha");
+            attributes.addFlashAttribute("mensagem", "A Ficha que você tentou cadastrar já existe.");
+            return mv;
+	        
         }
-        
-        fichaService.adicionarFicha(ficha);
-        ModelAndView mv = new ModelAndView("redirect:/cadastrarFicha");
-        attributes.addFlashAttribute("mensagem", "Cadastro da ficha realizado com sucesso.");
-        return mv;
     }
+        
 	
 	//retorna o formulario de atualizar ficha
 	@RequestMapping(value="/atualizarFicha", method = RequestMethod.GET)
