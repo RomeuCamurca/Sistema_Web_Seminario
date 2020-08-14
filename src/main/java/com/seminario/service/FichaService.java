@@ -34,6 +34,9 @@ public class FichaService {
 	
 	public Ficha buscarPorId(long id) {
 		return fichaRepository.findById(id).get();
-		
+	}
+	
+	public Ficha buscarPorNome(String nome) {
+		return fichaRepository.findByNome(nome);
 	}
 }

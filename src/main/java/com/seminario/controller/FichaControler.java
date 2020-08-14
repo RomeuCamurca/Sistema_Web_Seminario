@@ -77,6 +77,15 @@ public class FichaControler {
         if(result.hasErrors()){
         	return formularioFicha(ficha);
         }
+        
+        Ficha fichaVerificar = fichaService.buscarPorNome(ficha.getNome());
+        
+        if (fichaVerificar.getNome().equals(ficha.getNome())) {
+        	 ModelAndView mv = new ModelAndView("redirect:/cadastrarFicha");
+             attributes.addFlashAttribute("mensagem", "A Ficha que você tentou cadastrar já existe.");
+             return mv;
+        }
+        
         fichaService.adicionarFicha(ficha);
         ModelAndView mv = new ModelAndView("redirect:/cadastrarFicha");
         attributes.addFlashAttribute("mensagem", "Cadastro da ficha realizado com sucesso.");
