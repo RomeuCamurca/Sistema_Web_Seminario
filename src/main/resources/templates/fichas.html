@@ -145,8 +145,14 @@ body {
 	<script>
 		$(document).ready(function() {
 			$('#id_da_tabela').DataTable({
+				
+		        lengthMenu: [
+		          [10, 25, 50, 100],
+		          ['10 Fichas', '25 Fichas', '50 Fichas', '100 Fichas']
+		        ],
+				
 				"language" : {
-					"lengthMenu" : "Mostrando _MENU_ registros por página",
+					"lengthMenu" : "Mostrando _MENU_ por página",
 					"zeroRecords" : "Nada encontrado",
 					"info" : "Mostrando página _PAGE_ de _PAGES_",
 					"infoEmpty" : "Nenhum registro disponível",

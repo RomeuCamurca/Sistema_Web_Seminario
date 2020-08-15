@@ -39,7 +39,7 @@ public class UsuarioController {
 			String permissao = usuario.getPermissao();
 			String roleUser;
 			
-			if (permissao.equals("A")) {
+			if (permissao.equals("ADMINISTRADOR")) {
 				roleUser ="ROLE_ADMIN";
 			}else {
 				roleUser="ROLE_USER";
@@ -75,7 +75,7 @@ public class UsuarioController {
 			String permissao = usuario.getPermissao();
 			String roleUser;
 			
-			if (permissao.equals("A")) {
+			if (permissao.equals("ADMINISTRADOR")) {
 				roleUser ="ROLE_ADMIN";
 			}else {
 				roleUser="ROLE_USER";
@@ -97,7 +97,7 @@ public class UsuarioController {
 			String permissao = usuario.getPermissao();
 			String roleUser;
 			
-			if (permissao.equals("A")) {
+			if (permissao.equals("ADMINISTRADOR")) {
 				roleUser ="ROLE_ADMIN";
 			}else {
 				roleUser="ROLE_USER";
