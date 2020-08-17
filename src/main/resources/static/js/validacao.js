@@ -191,11 +191,6 @@ jQuery.validator.addMethod("dddValido", function(valor){
 					},
 					senha: {
 						required: true,
-						maxlength: 12,
-    					minlength: 6,
-						senhaComNumero: true,
-						senhaComLetraMinuscula: true,
-						senhaComLetraMaiuscula: true
 					}
     			}
     		})

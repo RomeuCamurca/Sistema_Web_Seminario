@@ -88,9 +88,9 @@ body {
 	
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb"
-			style="background-color: white; padding-left: 0px; font-weight: bold; font-size: 18px;">
+			style="background-color: white; padding-left: 0px; font-weight: bold; font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
 			<li class="breadcrumb-item active" aria-current="page">LISTA DE USUÁRIOS</li>
-			<li><button type="button" class="btn btn-primary" id="botaoAdicionar" data-toggle="modal" data-target="#form_modal" style="color: black; font-weight: bold; margin-left: 840px; margin-top: -25px;">CADASTRAR USUÁRIO<img style="margin-left: 5px; margin-top: -3px;" src="/img/plus-circle.svg"></button></li>
+			<li><button type="button" class="btn btn-primary" id="botaoAdicionar" data-toggle="modal" data-target="#form_modal" style="color: black; font-weight: bold;">CADASTRAR USUÁRIO<img style="margin-left: 5px; margin-top: -3px;" src="/img/plus-circle.svg"></button></li>
 		</ol>
 	</nav>
 	<div class="card-body"> 
@@ -260,7 +260,7 @@ body {
 						
 				<div class="col">
 					<label style="color: black; font-weight: bold;">Senha</label>
-					<input type="password" id="senha_edit" class="form-control valid" name="senha" placeholder="Senha do Usuário" disabled></input>
+					<input type="password" id="senha_edit" class="form-control" name="senha" placeholder="Senha do Usuário" disabled></input>
 				</div>
 			</div>
 			
