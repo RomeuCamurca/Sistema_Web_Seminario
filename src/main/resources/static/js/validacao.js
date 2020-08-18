@@ -59,33 +59,6 @@ jQuery.validator.addMethod("dddValido", function(valor){
 			  }
 		}, "Por favor, forneça um nome sem conter números.")
 		
-		jQuery.validator.addMethod("senhaComNumero", function(valor){
-			if (valor.replace(/[^0-9]/g,'')){ 
-				return true
-			} 
-			else {
-				return false
-			  }
-		}, "A senha deve conter pelo menos um número.")
-		
-		jQuery.validator.addMethod("senhaComLetraMinuscula", function(valor){
-			if (valor.replace(/[^a-z]/g,'')){ 
-				return true
-			} 
-			else {
-				return false
-			  }
-		}, "A senha deve conter pelo menos uma letra minúscula.")
-		
-		jQuery.validator.addMethod("senhaComLetraMaiuscula", function(valor){
-			if (valor.replace(/[^A-Z]/g,'')){ 
-				return true
-			} 
-			else {
-				return false
-			  }
-		}, "A senha deve conter pelo menos uma letra maiúscula.")
-		
     	$(document).ready(function() {
     		$('#formFicha').validate({
     			rules:{
@@ -153,11 +126,6 @@ jQuery.validator.addMethod("dddValido", function(valor){
 					},
 					senha: {
 						required: true,
-						maxlength: 12,
-    					minlength: 6,
-						senhaComNumero: true,
-						senhaComLetraMinuscula: true,
-						senhaComLetraMaiuscula: true
 					}
     			}
     		})
