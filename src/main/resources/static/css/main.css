@@ -1,0 +1,32 @@
+:root {
+	--color-background: #e3f2fd;
+}
+
+body {
+	 background-color: var(--color-background);
+}
+
+header nav .navbar-brand {
+	font-family: times; 
+	font-weight: 400; 
+	font-size: 24px;
+}
+
+header nav .img-circle {
+	max-width: 90px; 
+	max-height: 90px;
+}
+
+header nav .dropdown {
+	margin-right: 30px; 
+	margin-top: -20px;
+}
+
+header nav .user {
+	color: black; 
+	font-weight: bold;
+}
+
+header nav #dropdownMenuButton {
+	color: black; 
+}

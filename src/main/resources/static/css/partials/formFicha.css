@@ -1,0 +1,27 @@
+.breadcrumb {
+	background-color: white; 
+	padding-left: 0px; 
+	font-weight: bold; 
+	font-size: 18px; 
+	display: flex; 
+	align-items: center; 
+	justify-content: space-between;
+}
+
+#att {
+	color: black; 
+	font-weight: bold;
+}
+
+#att img {
+	margin-left: 5px; 
+	margin-top: -4px;
+}
+
+#formFicha {
+	margin-top: -30px;
+}
+
+#formFicha .labels-inputs {
+	font-weight: bold;
+}

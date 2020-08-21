@@ -1,0 +1,118 @@
+.breadcrumb {
+	background-color: white; 
+	padding-left: 0px; 
+	font-weight: bold; 
+	font-size: 18px; 
+	display: flex; 
+	align-items: center; 
+	justify-content: space-between;
+}
+
+#botaoAdicionar {
+	color: black; 
+	font-weight: bold;
+}
+
+#botaoAdicionar img {
+	margin-left: 5px; 
+	margin-top: -3px;
+}
+
+/* Modal da mensagem de sucesso em adicionar e remover usuário */
+
+#alert_modal_sucesso .modal-header {
+	background-color: #D4EDDA;
+}
+
+/* Modal da mensagem de erro em adicionar usuário */
+
+#alert_modal_erro .modal-header {
+	background-color: #F8D7DA;
+}
+
+/* Modal do deletar usuário */
+
+#id_Do_Modal_Do_Deletar_usuario .modal-header {
+	background-color: #e3f2fd; 
+	color: black; 
+	font-weight: bold;
+}
+
+#id_Do_Modal_Do_Deletar_usuario .modal-header h5{
+	color: black; 
+	font-weight: bold;
+}
+
+#id_Do_Modal_Do_Deletar_usuario .modal-body p {
+	font-weight: bold;
+}
+
+#id_Do_Modal_Do_Deletar_usuario .modal-footer {
+	background-color: #e3f2fd;
+}
+
+#id_Do_Modal_Do_Deletar_usuario .modal-footer a {
+	color: white;
+}
+
+/* modal do adicionar usuário */
+
+#form_modal .modal-header {
+	background-color: #e3f2fd; 
+	color: black; 
+	font-weight: bold;
+}
+
+#form_modal .modal-header .modal-title {
+	color: black; 
+	font-weight: bold;
+}
+
+#form_modal #form_add .labels-inputs {
+	color: black; 
+	font-weight: bold;
+}
+
+#form_modal #form_add .marge {
+	margin-top: 20px;
+}
+
+/* modal do atualizar usuário */
+
+#form_edit_modal .modal-header {
+	background-color: #e3f2fd; 
+	color: black; 
+	font-weight: bold;
+}
+
+#form_edit_modal .modal-header .modal-title {
+	color: black; 
+	font-weight: bold;
+}
+
+#form_edit_modal #form_edit .labels-inputs {
+	color: black; 
+	font-weight: bold;
+}
+
+#form_edit_modal #form_edit .marge {
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

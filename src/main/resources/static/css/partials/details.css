@@ -1,0 +1,15 @@
+.breadcrumb {
+	background-color: white; 
+	padding-left: 0px; 
+	font-weight: bold; 
+	font-size: 18px;
+}
+
+article p label{
+	font-weight: bold;
+}
+
+article a{
+	margin-left: 1000px;
+}
+

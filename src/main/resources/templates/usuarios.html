@@ -9,36 +9,28 @@
 
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/partials/users.css">
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
 <link rel="shortcut icon" href="/img/AS.ico" type="image/x-icon">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<style>
-body {
-	background-color: #e3f2fd;
-}
-</style>
 </head>
 
 <body>
 <header>
-		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-			<span class="navbar-brand mb-0 h1"
-				style="font-weight: bold; font-family: times; color: #000000; color: rgb(0, 0, 0); 
-				background-color: #000000; background-color: rgba(0, 0, 0, 0); line-height: normal; 
-				vertical-align: baseline; letter-spacing: normal; word-spacing: 0px; font-weight: 400; 
-				font-style: normal; font-variant: normal; text-transform: none; text-decoration: none solid rgb(0, 0, 0);
-				 text-align: start; text-indent: 0px; font-size: 24px;">
-				<img src="/img/2.png" class="img-circle"
-				style="max-width: 90px; max-height: 90px;" /> ASSOCIAÇÃO AMIGOS DO SEMINÁRIO
+		<nav class="navbar navbar-light">
+			<span class="navbar-brand mb-0 h1">
+				<img src="/img/2.png" class="img-circle"/> ASSOCIAÇÃO AMIGOS DO SEMINÁRIO
 			</span>
 			
-			<div class="dropdown" style="margin-right: 30px; margin-top: -20px;">
-			  <button class="btn btn-primary dropdown-toggle" style="color: black; font-weight: bold;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<div class="dropdown">
+			  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    <img src="/img/at-sign.svg">
-			    <span th:text="${logado.login}"></span>
+			    <span th:text="${logado.login}" class="user"></span>
 			  </button>
 			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			    <a class="dropdown-item" href="/">Menu</a>
@@ -53,7 +45,7 @@ body {
 	<div id="alert_modal_sucesso" class="modal fade hide" tabindex="-1" role="dialog" aria-hidden="true">
 	    <div class="modal-dialog" role="document">
 	      <div class="modal-content">
-	        <div class="modal-header" style="background-color: #D4EDDA">
+	        <div class="modal-header">
 	          <h5 id="alert_msg_sucesso" class="modal-title"></h5>
 	          <button class="close" data-dismiss="modal" aria-label="Close">
 	            <span aria-hidden="true">×</span>
@@ -63,11 +55,11 @@ body {
 	    </div>
 	</div>
 	
-	<!-- Modal da mensagem de erro em adicionar usuário-->
+	<!-- Modal da mensagem de erro em adicionar usuário -->
 	<div id="alert_modal_erro" class="modal fade hide" tabindex="-1" role="dialog" aria-hidden="true">
 	    <div class="modal-dialog" role="document">
 	      <div class="modal-content">
-	        <div class="modal-header" style="background-color: #F8D7DA">
+	        <div class="modal-header">
 	          <h5 id="alert_msg_erro" class="modal-title"></h5>
 	          <button class="close" data-dismiss="modal" aria-label="Close">
 	            <span aria-hidden="true">×</span>
@@ -80,37 +72,36 @@ body {
 	<div class="card container">
 	
 	<nav aria-label="breadcrumb">
-		<ol class="breadcrumb"
-			style="background-color: white; padding-left: 0px; font-weight: bold; font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
+		<ol class="breadcrumb">
 			<li class="breadcrumb-item active" aria-current="page">LISTA DE USUÁRIOS</li>
-			<li><button type="button" class="btn btn-primary" id="botaoAdicionar" data-toggle="modal" data-target="#form_modal" style="color: black; font-weight: bold;">CADASTRAR USUÁRIO<img style="margin-left: 5px; margin-top: -3px;" src="/img/plus-circle.svg"></button></li>
+			<li><button type="button" class="btn btn-primary" id="botaoAdicionar" data-toggle="modal" data-target="#form_modal">CADASTRAR USUÁRIO<img src="/img/plus-circle.svg"></button></li>
 		</ol>
 	</nav>
 	<div class="card-body"> 
 	
-		<!-- Modal do deletar usuário-->
+		<!-- Modal do deletar usuário -->
 		<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="id_Do_Modal_Do_Deletar_usuario" role="dialog" tabindex="-1">
 	        <div class="modal-dialog">
 	            <div class="modal-content">
-	                <div class="modal-header" style="background-color: #e3f2fd; color: black; font-weight: bold;">
-	                    <h5 class="modal-title" id="myModalLabel" style="color: black; font-weight: bold;">DELETAR USUÁRIO</h5>
+	                <div class="modal-header">
+	                    <h5 class="modal-title" id="myModalLabel">DELETAR USUÁRIO</h5>
 	                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
 	                    	<span aria-hidden="true">&times;</span>
 	                    </button>
 	                    
 	                </div>
 	                <div class="modal-body">
-	                    <p class="alert" style="font-weight: bold;">
+	                    <p class="alert">
 	                        Tem certeza de que deseja excluir o usuário selecionado?
 	                    </p>
 	                </div>
-	                <div class="modal-footer" style="background-color: #e3f2fd;">
+	                <div class="modal-footer">
 	                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
-	                    <a class="btn btn-primary" style="color: white;" id="botao_De_Deletar_Modal">Deletar</a>
+	                    <a class="btn btn-primary" id="botao_De_Deletar_Modal">Deletar</a>
 	                </div>
 	            </div>
 	        </div>
-    </div> 
+    	</div> 
 	
 		<div class="container">
 			<table class="table table-bordered text-center table-hover" id="id_da_tabela_usuarios">
@@ -145,8 +136,8 @@ body {
 	<div id="form_modal" class="modal fade hide bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #e3f2fd; color: black; font-weight: bold;">
-          <h5 class="modal-title" style="color: black; font-weight: bold;">ADICIONAR USUÁRIO</h5>
+        <div class="modal-header">
+          <h5 class="modal-title">ADICIONAR USUÁRIO</h5>
           <button class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -155,36 +146,36 @@ body {
           <form method="POST" id="form_add">
 	      	<div class="row">
 	            <div class="col">
-					<label style="color: black; font-weight: bold;">Nome</label>
+					<label class="labels-inputs">Nome</label>
 					<input type="text" class="form-control valid" name="nomecompleto" placeholder="Nome Completo" required></input>
 				</div>
 					
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Email</label>
+					<label class="labels-inputs">Email</label>
 					<input type="text" class="form-control valid" name="email" placeholder="Email do Usuário" required></input>
 				</div>
 			</div>
 					
-			<div class="row" style="margin-top: 20px;">		
+			<div class="row marge">		
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Telefone</label>
+					<label class="labels-inputs">Telefone</label>
 					<input type="text" class="form-control valid" name="telefone" id="telefone_add_user" placeholder="Número de Telefone" required></input>
 				</div>
 					
 				<div class="col">	
-					<label style="color: black; font-weight: bold;">Login</label>
+					<label class="labels-inputs">Login</label>
 					<input type="text" class="form-control valid" name="login" placeholder="Login do Usuário" required></input>
 				</div>
 						
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Senha</label>
+					<label class="labels-inputs">Senha</label>
 					<input type="password" class="form-control valid" name="senha" placeholder="Senha do Usuário" required></input>
 				</div>
 			</div>
 			
-			<div class="form-row" style="margin-top: 20px;">
+			<div class="form-row marge">
 				<div class="form-group col-md-4">
-	      			<label style="color: black; font-weight: bold;">Nível de Permissão</label>
+	      			<label class="labels-inputs">Nível de Permissão</label>
 	      			<select name="permissao" class="form-control valid" required>
 	        			<option selected disabled>Escolher...</option>
 	        			<option value="ADMINISTRADOR">ADMINISTRADOR</option>
@@ -193,10 +184,10 @@ body {
       			</div>
     		</div>	
 			
-			<p style="margin-top: 20px;"><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
+			<p><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
 			
-			<button class="btn btn-primary" id="btnSalvar" style="margin-top: 20px;">Cadastrar</button>	
-			<button class="btn btn-secondary" data-dismiss="modal" type="button" style="margin-top: 20px;">Cancelar</button>
+			<button class="btn btn-primary" id="btnSalvar">Cadastrar</button>	
+			<button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
 			
           </form>
         </div>
@@ -208,8 +199,8 @@ body {
 	<div id="form_edit_modal" class="modal fade hide bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #e3f2fd; color: black; font-weight: bold;">
-          <h5 class="modal-title" style="color: black; font-weight: bold;">ATUALIZAR USUÁRIO</h5>
+        <div class="modal-header">
+          <h5 class="modal-title">ATUALIZAR USUÁRIO</h5>
           <button class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -221,29 +212,29 @@ body {
           
 	      	<div class="row">
 	            <div class="col">
-					<label style="color: black; font-weight: bold;">Nome</label>
+					<label class="labels-inputs">Nome</label>
 					<input type="text" id="nomecompleto_edit" class="form-control valid" name="nomecompleto" placeholder="Nome Completo" required></input>
 				</div>
 					
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Email</label>
+					<label class="labels-inputs">Email</label>
 					<input type="text" id="email_edit" class="form-control valid" name="email" placeholder="Email do Usuário" required></input>
 				</div>
 			</div>
 					
-			<div class="row" style="margin-top: 20px;">		
+			<div class="row marge">		
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Telefone</label>
+					<label class="labels-inputs">Telefone</label>
 					<input type="text" class="form-control valid" name="telefone" id="telefone_edit" placeholder="Número de Telefone" required></input>
 				</div>
 					
 				<div class="col">	
-					<label style="color: black; font-weight: bold;">Login</label>
+					<label class="labels-inputs">Login</label>
 					<input type="text" id="login_edit" class="form-control valid" name="login" placeholder="Login do Usuário" required readonly="readonly"></input>
 				</div>
 						
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Alterar Senha?</label>
+					<label class="labels-inputs">Alterar Senha?</label>
 					<select id="escolha" class="form-control valid" required>
 						<option selected disabled>Escolher...</option>
 	        			<option value="S">SIM</option>
@@ -252,14 +243,14 @@ body {
 				</div>		
 						
 				<div class="col">
-					<label style="color: black; font-weight: bold;">Senha</label>
+					<label class="labels-inputs">Senha</label>
 					<input type="password" id="senha_edit" class="form-control" name="senha" placeholder="Senha do Usuário" disabled></input>
 				</div>
 			</div>
 			
-			<div class="form-row" style="margin-top: 20px;">
+			<div class="form-row marge">
 				<div class="form-group col-md-4">
-	      			<label style="color: black; font-weight: bold;">Nível de Permissão</label>
+	      			<label class="labels-inputs">Nível de Permissão</label>
 	      			<select name="permissao" id="permissao_edit" disabled class="form-control valid">
 	        			<option value="ADMINISTRADOR">ADMINISTRADOR</option>
 	        			<option value="USUÁRIO">USUÁRIO</option>
@@ -268,10 +259,10 @@ body {
       			</div>
     		</div>	
 			
-			<p style="margin-top: 20px;"><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
+			<p><small class="form-text text-muted">Todos os campos são obrigatórios!</small></p>
 			
-			<button class="btn btn-primary" id="btnAtualizar" style="margin-top: 20px;">Atualizar</button>	
-			<button class="btn btn-secondary" data-dismiss="modal" type="button" style="margin-top: 20px;">Cancelar</button>
+			<button class="btn btn-primary" id="btnAtualizar">Atualizar</button>	
+			<button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
 			
           </form>
         </div>

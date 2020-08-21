@@ -1,0 +1,58 @@
+body {
+	background-color: #004080;
+}
+
+.card {
+	margin-top: 80px; 
+	max-width: 500px; 
+	height:600px; 
+	background-color: #e3f2fd;
+}
+
+.breadcrumb {
+	background-color: #e3f2fd; 
+	padding-left: 0px; 
+	font-weight: bold; 
+	font-size: 18px;
+}
+
+.img-circle {
+	max-width: 200px; 
+	max-height: 200px; 
+	margin-top: 50px; 
+	margin-left: 25px;
+}
+
+#formLogin label {
+	color: black; font-weight: bold;
+}
+
+#formLogin .inputs-box {
+	position: relative;
+}
+
+#formLogin .inputs-box i {
+	position: absolute; 
+	left: 0; 
+	top: 6px; 
+	padding: 0px 10px;	
+}
+
+#formLogin .merge {
+	margin-top: 10px;
+}
+
+#formLogin .form-control {
+	padding-left: 40px;
+}
+
+#formLogin .btn-primary {
+	margin-top: 30px;
+}
+
+
+
+
+
+
+
