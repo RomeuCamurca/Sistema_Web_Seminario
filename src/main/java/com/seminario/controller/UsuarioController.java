@@ -2,7 +2,6 @@ package com.seminario.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.seminario.model.Role;
 import com.seminario.model.Usuario;
 import com.seminario.service.UsuarioService;
@@ -48,11 +46,11 @@ public class UsuarioController {
 			Role role = new Role();
 			List<Usuario> usuarios = new ArrayList<Usuario>();
 			List<Role> roles = new ArrayList<Role>();
-			role.setNomeRole(roleUser); // seta a role adm ou user
-			usuarios.add(usuario); // adiciona o user no list
-			roles.add(role); // adiciona a role no list
-			role.setUsuarios(usuarios); // adiciona o list user na role
-			usuario.setRoles(roles); // adiciona o list roles no user
+			role.setNomeRole(roleUser); 
+			usuarios.add(usuario); 
+			roles.add(role); 
+			role.setUsuarios(usuarios); 
+			usuario.setRoles(roles); 
 			usuarioService.adicionarUsuario(usuario);
 			
 			return new ResponseEntity<Integer>(1,HttpStatus.OK);

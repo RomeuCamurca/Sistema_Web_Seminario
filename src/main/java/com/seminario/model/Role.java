@@ -1,14 +1,11 @@
 package com.seminario.model;
 
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import org.springframework.security.core.GrantedAuthority;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Role implements GrantedAuthority{
@@ -34,7 +31,6 @@ public class Role implements GrantedAuthority{
 	
 	@Override
 	public String getAuthority() {
-		// TODO Auto-generated method stub
 		return this.nomeRole;
 	}
 

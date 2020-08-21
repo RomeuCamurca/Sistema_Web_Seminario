@@ -1,19 +1,17 @@
 package com.seminario.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.seminario.model.Usuario;
 import com.seminario.repository.UsuarioRepository;
+
 @Service
 public class UsuarioService {
 	
 	@Autowired
 	UsuarioRepository usuarioRepository;
-
 	
 	public void adicionarUsuario(Usuario usuario) {
 		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));

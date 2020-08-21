@@ -26,7 +26,6 @@ public class FichaControler {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	//lista todas as fichas
 	@RequestMapping(value = "/fichas", method = RequestMethod.GET)
 	public ModelAndView listaFichas() {
 		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -41,7 +40,6 @@ public class FichaControler {
 		return mv;
 	}
 	
-	//listar os detalhes de uma ficha
 	@RequestMapping("/fichas/{id}")
 	public ModelAndView detalhesFicha(@PathVariable("id") long id) {
 		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -56,7 +54,6 @@ public class FichaControler {
 		return mv;
 	}
 	
-	//retorna o formulario de adicionar ficha ficha
 	@RequestMapping(value="/cadastrarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioFicha(Ficha ficha) {
 		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -71,7 +68,6 @@ public class FichaControler {
 		return mv;
 	}
 	
-	//adicionar cadastro de ficha
 	@RequestMapping(value="/cadastrarFicha", method=RequestMethod.POST)
     public ModelAndView adicionarFicha(@Valid Ficha ficha, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
@@ -94,8 +90,6 @@ public class FichaControler {
         }
     }
         
-	
-	//retorna o formulario de atualizar ficha
 	@RequestMapping(value="/atualizarFicha", method = RequestMethod.GET)
 	public ModelAndView formularioAtFicha(Ficha ficha) {
 		Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -110,14 +104,12 @@ public class FichaControler {
 		return mv;
 	}
 	
-	//usado para retornar a ficha em especifico para o formulario de adicionar
 	@RequestMapping(value="/atualizar/{id}", method = RequestMethod.GET)
 	public ModelAndView atualizarFicha(@PathVariable("id") Long id) {
 		
 		return formularioAtFicha(fichaService.buscarPorId(id));
 	}
 	
-	//utiliza o metodo de atualizar do fichaService para atualizar a ficha
 	@RequestMapping(value="/atualizarFicha", method=RequestMethod.POST)
 	public ModelAndView salvarFicha(@Valid Ficha ficha, BindingResult result, RedirectAttributes attributes) {
 		
@@ -131,7 +123,6 @@ public class FichaControler {
         return mv;
 	}
 	
-	//metodo responsavel por deletar uma ficha em especifico
 	@RequestMapping(value="/deletar/{id}", method = RequestMethod.GET)
 	public ModelAndView deletarFicha(@PathVariable("id") Long id, RedirectAttributes attributes) {
 		fichaService.removerFicha(id);

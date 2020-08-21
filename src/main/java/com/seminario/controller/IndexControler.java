@@ -15,7 +15,6 @@ public class IndexControler {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	//retorna a página inicial
 		@RequestMapping("/")
 	    public ModelAndView index(){
 			Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
