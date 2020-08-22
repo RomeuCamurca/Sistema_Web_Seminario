@@ -22,3 +22,23 @@
 	margin-right: 800px;
 }
 
+/* Modal de deletar ficha */
+
+#id_Do_Modal_Do_Deletar .modal-header {
+	background-color: #e3f2fd; 
+	color: black; 
+	font-weight: bold;
+}
+
+#id_Do_Modal_Do_Deletar .modal-body p {
+	font-weight: bold;
+	margin: 0;
+}
+
+#id_Do_Modal_Do_Deletar .modal-footer {
+	background-color: #e3f2fd;
+}
+
+
+
+
