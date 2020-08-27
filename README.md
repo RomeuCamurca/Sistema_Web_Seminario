@@ -23,6 +23,8 @@ Projeto elaborado em 2020.1 - UFC Campus Quixadá
     
     > Thymeleaf
     
+    > Javascript
+    
     > Jquery
     
     > Datatables
