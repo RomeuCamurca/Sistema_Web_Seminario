@@ -6,7 +6,7 @@ Projeto elaborado em 2020.1 - UFC Campus Quixadá
 
 #### Demonstração Funcional:
 
-  * http://3.92.18.23:8080/
+  * http://50.19.52.15:8080/
 
   * Login: admin
 
