@@ -66,6 +66,79 @@ Projeto elaborado em 2020.1 - UFC Campus Quixadá
   
   Ao acessar o sistema, é necessário se autenticar, portanto logo abaixo está descrito as credenciais do usuário padrão.
   
+  #### Execução em Ambiente Linux
+  
+  Primeiro é necessário que a máquina que rodará o sistema tenha as dependências e softwares necessários:
+  
+  `$ sudo apt update`
+  
+  `$ sudo apt upgrade`
+  
+  `$ sudo apt install mysql-server`
+  
+  `$ sudo apt install default-jdk`
+  
+  `$ sudo apt install git`
+  
+  `$ sudo apt install maven`
+  
+  Com o mysql instalado na máquina, é necessário portanto configurar o mysql, apesar de o banco e tabelas e o primeiro usuário serem criados
+  de forma automática pelo sistema, é pertinente, mas porém opcional fazer a configuração manual para evitar possíveis erros:
+  
+  `sudo mysql`
+  
+  `CREATE DATABASE seminario;`
+  
+  `CREATE USER 'admin'@'localhost' IDENTIFIED BY 'root';`
+  
+  `SET PASSWORD FOR 'admin'@'localhost' = PASSWORD('429461');`
+  
+  `GRANT ALL ON seminario.* TO 'admin'@'localhost';`
+  
+  `FLUSH PRIVILEGES;`
+  
+  Caso queira realizar a configuração com parametros diferentes, é possível modificar os parametros do banco de dados, que se encontra em:
+  
+  src/main/resources/application.properties
+  
+  Neste arquivo de configuração é possível modificar parametros como:
+  
+  ##### url da conexão com o banco de dados mysql
+  spring.datasource.url = jdbc:mysql://localhost:3306/seminario?createDatabaseIfNotExist=true
+ 
+  ##### nome de usuário que realizará a conexão
+  spring.datasource.username=admin
+  
+  ##### senha do usuário que realizará a conexão
+  spring.datasource.password=429461
+  
+  Com o banco de dados já configurado, é necessário portanto clonar o repositório do github:
+  
+  `$ git clone https://github.com/RomeuCamurca/Sistema_Web_Seminario.git`
+  
+  Com o repositório clonado, é necessário portanto criar o executável .jar para executa-lo:
+  
+  `$ cd Sistema_Web_Seminario`
+  
+  `$ mvn clean package`
+  
+  O executável .jar estará em: /Sistema_Web_Seminario/target/cadastro-0.0.1-SNAPSHOT.jar
+  
+  Para executar:
+  
+  `$ cd target`
+  
+  `$ java -jar cadastro-0.0.1-SNAPSHOT.jar`
+  
+  O serviço web se executado localmente estará disponível em: 
+  
+  * localhost:8080
+  
+  O serviço web pode estar também com acesso via ip público, um exemplo seria atráves de instâncias Amazon EC2, neste caso:
+  
+  * ip-público:8080
+  
+  
   #### CREDENCIAIS DO USUÁRIO PADRÃO:
   LOGIN: admin
   
